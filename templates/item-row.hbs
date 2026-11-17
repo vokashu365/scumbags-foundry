@@ -1,0 +1,11 @@
+<div class="sb-item draggable" data-item-id="{{id}}">
+  <img src="{{img}}" alt="" data-action="itemEdit">
+  <div class="sb-item-main"><a class="sb-item-name" data-action="itemEdit">{{name}}</a>{{#if sub}}<div class="sb-item-sub">{{sub}}</div>{{/if}}</div>
+  <div class="sb-item-ctl">
+    {{#each pools}}<span class="sb-mag"><em>{{label}}</em><input type="number" data-field="{{field}}" value="{{value}}" min="0" step="1"><i>/{{max}}</i></span>{{/each}}
+    {{#if attach}}<select class="sb-attach" data-field="system.attachedTo" title="{{attach.title}}">{{selectOptions attach.options selected=attach.value}}</select>{{/if}}
+    {{#if hasQty}}<span class="sb-mag"><em>×</em><input type="number" data-field="system.quantity" value="{{qty}}" min="0" step="1"></span>{{/if}}
+    {{#if toggle}}<a class="sb-ico {{#if equipped}}on{{/if}}" data-action="itemToggle" data-field="{{toggle.field}}" title="{{toggle.title}}"><i class="fa-solid {{toggle.icon}}"></i></a>{{/if}}
+    <a class="sb-ico" data-action="itemDelete" title="{{localize 'SCUMBAGS.Item.Delete'}}"><i class="fa-solid fa-trash"></i></a>
+  </div>
+</div>

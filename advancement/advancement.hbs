@@ -1,0 +1,105 @@
+<div class="sb-root adv">
+  <header class="adv-sum {{#if overBudget}}bad{{/if}}">
+    <div class="adv-num"><span class="sb-lbl">{{localize "SCUMBAGS.Adv.Budget"}}</span><b>{{t.budget}}</b><small>1000 + {{d.earned}}</small></div>
+    <div class="adv-num"><span class="sb-lbl">{{localize "SCUMBAGS.Adv.Skills"}}</span><b>{{t.skillsXP}}</b></div>
+    <div class="adv-num"><span class="sb-lbl">{{localize "SCUMBAGS.Adv.Points"}}</span><b>{{t.points}}</b><small>{{localize "SCUMBAGS.Adv.FreeExtra"}} {{t.extra}} × 100 = {{t.pointsXP}}</small></div>
+    <div class="adv-num left"><span class="sb-lbl">{{localize "SCUMBAGS.Adv.Left"}}</span><b>{{t.left}}</b><small>XP</small></div>
+    <div class="adv-opts">
+      <label class="sb-tick"><input type="checkbox" data-draft="creation" {{checked d.creation}}>{{localize "SCUMBAGS.Adv.Creation"}}</label>
+      <label class="sb-tick">{{localize "SCUMBAGS.Adv.Earned"}} <input class="sb-mini" type="number" min="0" step="1" data-draft="earned" value="{{d.earned}}"></label>
+      <span class="adv-cap">{{localize "SCUMBAGS.Adv.Cap"}}: {{t.cap}}</span>
+    </div>
+  </header>
+
+  <nav class="sb-tabs tabs">
+    {{#each tabs}}<a data-action="advTab" data-tab="{{id}}" class="{{#if active}}active{{/if}}">{{label}}</a>{{/each}}
+  </nav>
+
+  <div class="adv-body">
+    {{#if on.stats}}
+    <section class="adv-stats">
+      <p class="adv-note">{{#if d.creation}}{{localize "SCUMBAGS.Adv.StatsNote"}}{{else}}{{localize "SCUMBAGS.Adv.StatsLocked"}}{{/if}}</p>
+      <div class="adv-statrow">
+        {{#each stats}}
+        <div class="sb-tile">
+          <span class="sb-lbl">{{label}}</span>
+          <span class="adv-step">
+            <a class="adv-btn {{#unless canDec}}off{{/unless}}" data-action="dec" data-kind="stat" data-key="{{key}}"><i class="fa-solid fa-minus"></i></a>
+            <b class="sb-box-num">{{value}}</b>
+            <a class="adv-btn {{#unless canInc}}off{{/unless}}" data-action="inc" data-kind="stat" data-key="{{key}}"><i class="fa-solid fa-plus"></i></a>
+          </span>
+        </div>
+        {{/each}}
+        <div class="sb-tile {{#if statsLeft}}warn{{/if}}"><span class="sb-lbl">{{localize "SCUMBAGS.Adv.StatsLeft"}}</span><b class="sb-box-num ro">{{statsLeft}}</b></div>
+        <div class="sb-tile"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.HP"}}</span><b class="sb-box-num ro">{{hpMax}}</b></div>
+      </div>
+    </section>
+    {{/if}}
+
+    {{#if on.skills}}
+    <p class="adv-note">{{localize "SCUMBAGS.Adv.SkillsNote"}}</p>
+    <div class="sb-skills adv-skills">
+      {{#each columns}}
+      <div class="sb-col">
+        {{#each this}}
+        <div class="sb-panel tight">
+          <span class="sb-plate">{{label}}</span>
+          {{#each rows}}
+          <div class="adv-row {{#if raised}}up{{/if}}">
+            {{#if custom}}
+            <span class="adv-name custom">
+              <input type="text" data-draft="{{group}}.{{slot}}.name" value="{{name}}" placeholder="{{placeholder}}">
+              {{#if isLang}}<label class="adv-native" title="{{localize 'SCUMBAGS.Adv.Native'}}"><input type="checkbox" data-draft="{{group}}.{{slot}}.native" {{checked native}}>{{localize "SCUMBAGS.Adv.NativeShort"}}</label>{{/if}}
+            </span>
+            {{else}}
+            <span class="adv-name">{{label}}{{#if base}} <small>({{base}})</small>{{/if}}</span>
+            {{/if}}
+            <span class="adv-step">
+              <a class="adv-btn {{#unless canDec}}off{{/unless}}" data-action="dec" data-kind="{{kind}}" data-key="{{key}}" data-group="{{group}}" data-slot="{{slot}}"><i class="fa-solid fa-minus"></i></a>
+              <b>{{level}}</b>
+              <a class="adv-btn {{#unless canInc}}off{{/unless}}" data-action="inc" data-kind="{{kind}}" data-key="{{key}}" data-group="{{group}}" data-slot="{{slot}}" title="{{#if next}}+{{next}} XP{{/if}}"><i class="fa-solid fa-plus"></i></a>
+            </span>
+            <span class="adv-cost">{{#if cost}}{{cost}}{{/if}}</span>
+          </div>
+          {{/each}}
+        </div>
+        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if on.archetypes}}
+    <p class="adv-note">{{localize "SCUMBAGS.Adv.ArchNote"}}</p>
+    <div class="adv-archs">
+      {{#each archList}}<a class="adv-arch {{#if active}}active{{/if}}" data-action="arch" data-arch="{{key}}">{{label}} <b>{{count}}</b></a>{{/each}}
+    </div>
+    <div class="adv-tree">
+      {{#each rows}}
+      <div class="adv-trow">
+        <span class="adv-lvl"><small>{{localize "SCUMBAGS.Tree.Lvl"}}</small>{{n}}</span>
+        {{#each nodes}}
+        {{#if @index}}<span class="adv-fork">{{../fork}}</span>{{/if}}
+        <a class="adv-node {{#if taken}}on{{/if}} {{#if disabled}}off{{/if}}" data-action="node" data-node="{{id}}" title="{{desc}}">
+          <i class="fa-{{#if taken}}solid fa-square-check{{else}}regular fa-square{{/if}}"></i>
+          <span><b>«{{name}}»</b><small>{{desc}}</small></span>
+        </a>
+        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
+
+  <footer class="adv-foot">
+    <div class="adv-problems">
+      {{#if ok}}<span class="ok"><i class="fa-solid fa-check"></i> {{localize "SCUMBAGS.Adv.AllGood"}}</span>
+      {{else}}{{#each t.problems}}<span><i class="fa-solid fa-triangle-exclamation"></i> {{this}}</span>{{/each}}{{/if}}
+    </div>
+    <div class="adv-actions">
+      <a class="sb-btn light" data-action="reset"><i class="fa-solid fa-rotate-left"></i> {{localize "SCUMBAGS.Adv.Reset"}}</a>
+      <a class="sb-btn light" data-action="cancel">{{localize "SCUMBAGS.Cancel"}}</a>
+      <a class="sb-btn" data-action="apply"><i class="fa-solid fa-check"></i> {{localize "SCUMBAGS.Adv.Apply"}}</a>
+    </div>
+  </footer>
+</div>

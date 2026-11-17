@@ -1,0 +1,47 @@
+<div class="sb-root">
+  <header class="sb-top item">
+    <img class="sb-thumb wide" src="{{actor.img}}" data-action="sbEditImage" data-edit="img" alt="" title="{{localize 'SCUMBAGS.Sheet.ChangeImage'}}">
+    <div class="sb-top-main">
+      <span class="sb-plate line">{{localize "SCUMBAGS.Vehicle.Passport"}}</span>
+      <input class="sb-name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'SCUMBAGS.Sheet.Name'}}">
+      <div class="sb-top-note">{{classLabel}} · {{statusLabel}}{{#if system.owner}} · {{system.owner}}{{/if}}</div>
+    </div>
+  </header>
+  <nav class="sb-tabs tabs" data-group="primary">
+    {{#each tabs}}<a data-action="tab" data-group="primary" data-tab="{{id}}" class="{{#if active}}active{{/if}}">{{label}}</a>{{/each}}
+  </nav>
+  <div class="sb-body">
+    <section class="tab {{#if on.info}}active{{/if}}" data-group="primary" data-tab="info">
+      <div class="sb-tiles">
+        <div class="sb-tile"><span class="sb-lbl">{{localize "SCUMBAGS.Vehicle.Speed"}}</span><b>{{system.speed}}</b></div>
+        <div class="sb-tile"><span class="sb-lbl">{{localize "SCUMBAGS.Vehicle.Handling"}}</span><b>{{handling}}</b></div>
+        <div class="sb-tile wide"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.HP"}}</span><span class="sb-pool"><input class="sb-box-num" type="number" name="system.hp.value" value="{{system.hp.value}}" min="0" step="1"><i>/</i><b class="sb-box-num ro">{{system.hp.max}}</b></span></div>
+        <div class="sb-tile wide"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.Armor"}}</span><span class="sb-pool"><input class="sb-box-num" type="number" name="system.armor.value" value="{{system.armor.value}}" min="0" step="1"><i>/</i><b class="sb-box-num ro">{{system.armor.max}}</b></span></div>
+        <div class="sb-tile"><span class="sb-lbl">{{localize "SCUMBAGS.Vehicle.Seats"}}</span><b>{{system.seats}}</b></div>
+      </div>
+      <div class="sb-panel">
+        {{#if system.properties}}<div class="sb-fact"><span class="sb-lbl">{{localize "SCUMBAGS.Vehicle.Properties"}}</span><span>{{system.properties}}</span></div>{{/if}}
+        {{#if system.mods}}<div class="sb-fact"><span class="sb-lbl">{{localize "SCUMBAGS.Vehicle.Mods"}}</span><span class="sb-desc">{{system.mods}}</span></div>{{/if}}
+        <div class="sb-fact"><span class="sb-lbl">{{localize "SCUMBAGS.Item.PriceLine"}}</span><span>{{priceOfficial}} / {{priceBlack}}</span></div>
+        <div class="sb-conds">
+          <span class="sb-lbl">{{localize "SCUMBAGS.Vehicle.Flat"}}</span>
+          {{#each tires}}<label class="sb-tick"><input type="checkbox" name="{{name}}" {{checked value}}>{{label}}</label>{{/each}}
+        </div>
+      </div>
+      {{#if items.length}}
+      <div class="sb-panel">
+        <span class="sb-plate">{{localize "SCUMBAGS.Vehicle.Installed"}}</span>
+        {{#each items}}{{> "systems/scumbags/templates/item-row.hbs"}}{{/each}}
+      </div>
+      {{/if}}
+      <div class="sb-panel">
+        <span class="sb-plate">{{localize "SCUMBAGS.Item.Description"}} {{#if editable}}<a class="sb-add" data-action="uiToggle" data-key="desc" title="{{localize 'SCUMBAGS.Item.EditDescription'}}"><i class="fa-solid {{#if ui.desc}}fa-check{{else}}fa-pen{{/if}}"></i></a>{{/if}}</span>
+        {{#if ui.desc}}<textarea name="system.description" rows="5">{{system.description}}</textarea>
+        {{else}}<div class="sb-desc">{{#if system.description}}{{system.description}}{{else}}<span class="sb-empty">{{localize "SCUMBAGS.Item.NoDescription"}}</span>{{/if}}</div>{{/if}}
+      </div>
+    </section>
+    <section class="tab {{#if on.settings}}active{{/if}}" data-group="primary" data-tab="settings">
+      {{> "systems/scumbags/templates/fields.hbs" groups=groups}}
+    </section>
+  </div>
+</div>

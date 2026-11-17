@@ -1,0 +1,997 @@
+{
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "NPC",
+      "vehicle": "Vehicle",
+      "business": "Business / Racket"
+    },
+    "Item": {
+      "weapon": "Weapon",
+      "armor": "Armor",
+      "ammo": "Ammo",
+      "mod": "Modification",
+      "gear": "Gear",
+      "effect": "Effect"
+    }
+  },
+  "SCUMBAGS": {
+    "Wordmark": "Scumbags",
+    "Cancel": "Cancel",
+    "SheetName": {
+      "character": "Character Sheet",
+      "npc": "NPC Sheet",
+      "vehicle": "Vehicle Sheet",
+      "business": "Business Sheet",
+      "item": "Item Sheet"
+    },
+    "Tab": {
+      "skills": "Skills",
+      "archetypes": "Archetypes",
+      "gear": "Gear",
+      "bio": "Biography",
+      "info": "Info",
+      "settings": "Settings"
+    },
+    "Stat": {
+      "muscle": "Muscle",
+      "reflexes": "Reflexes",
+      "brains": "Brains",
+      "cool": "Cool"
+    },
+    "StatAbbr": {
+      "muscle": "MUS",
+      "reflexes": "REF",
+      "brains": "BRN",
+      "cool": "COOL"
+    },
+    "SkillGroup": {
+      "perception": "Perception",
+      "body": "Body",
+      "control": "Vehicles",
+      "melee": "Close Combat",
+      "ranged": "Ranged Combat",
+      "education": "Education",
+      "music": "Music",
+      "social": "Social",
+      "technical": "Technical",
+      "art": "Arts"
+    },
+    "Custom": {
+      "languages": "Language",
+      "sciences": "Science",
+      "instruments": "Instrument"
+    },
+    "Skill": {
+      "awareness": "Awareness",
+      "concentration": "Concentration",
+      "tailing": "Tailing",
+      "athletics": "Athletics",
+      "endurance": "Endurance",
+      "flexibility": "Flexibility",
+      "stealth": "Stealth",
+      "driving": "Driving",
+      "piloting": "Piloting",
+      "boating": "Boating",
+      "riding": "Riding",
+      "brawling": "Brawling",
+      "meleeWeapons": "Melee Weapons",
+      "dodge": "Dodge",
+      "handguns": "Handguns & Shotguns",
+      "automatics": "Automatic Weapons",
+      "sniper": "Sniper Rifles",
+      "heavy": "Heavy Weapons",
+      "throwing": "Throwing",
+      "archery": "Bows & Crossbows",
+      "gambling": "Gambling",
+      "business": "Business",
+      "accounting": "Accounting",
+      "deduction": "Deduction",
+      "computers": "Computers",
+      "forensics": "Forensics",
+      "streetwise": "Streetwise",
+      "medicine": "Medicine",
+      "research": "Research",
+      "tactics": "Planning & Tactics",
+      "performance": "Performance",
+      "composition": "Composition",
+      "intimidation": "Intimidation",
+      "deception": "Deception",
+      "insight": "Insight",
+      "trading": "Haggling",
+      "persuasion": "Persuasion",
+      "aircraftTech": "Aircraft Mechanics",
+      "autoTech": "Auto Mechanics",
+      "lockpicking": "Lockpicking",
+      "demolitions": "Demolitions",
+      "thievery": "Thievery",
+      "techKnowledge": "Electronics",
+      "marineTech": "Marine Mechanics",
+      "gunsmith": "Gunsmithing",
+      "forgery": "Forgery",
+      "photoFilm": "Photo & Film",
+      "acting": "Acting",
+      "writing": "Writing",
+      "artCraft": "Arts & Crafts"
+    },
+    "DC": {
+      "9": "simple",
+      "13": "amateur",
+      "15": "in-between",
+      "17": "professional",
+      "21": "extreme",
+      "27": "legendary"
+    },
+    "Range": {
+      "r4": "up to 4 m",
+      "r12": "5–12 m",
+      "r24": "13–24 m",
+      "r50": "25–50 m",
+      "r200": "51–200 m",
+      "r400": "201–400 m",
+      "r1000": "401 m – 1 km",
+      "r2000": "1–2 km"
+    },
+    "RangeClass": {
+      "pistols": "Pistols",
+      "shotguns": "Shotguns",
+      "smg": "SMGs",
+      "rifles": "Assault rifles",
+      "mg": "Machine guns",
+      "sniper": "Sniper rifles",
+      "launchers": "Launchers & RPGs",
+      "throwing": "Thrown",
+      "bows": "Bows & crossbows"
+    },
+    "AttackMod": {
+      "aimed": "Aimed: head, arm or leg",
+      "burst": "Burst",
+      "peeking": "Target leaning out of cover",
+      "sprinted": "Target sprinted on its turn",
+      "prone": "Target prone, beyond 12 m",
+      "dark": "Darkness, smoke, downpour",
+      "passenger": "From a moving car: passenger",
+      "driver": "From a moving car: driver",
+      "dual": "Dual wielding"
+    },
+    "Roll": {
+      "Roll": "Roll",
+      "DC": "DC",
+      "Success": "Success",
+      "Failure": "Failure",
+      "Opposed": "opposed check: compare totals",
+      "Jam": "Misfire: no shot, the turn is lost.",
+      "Wear": "Rolled a 1: the shot goes off, plus a wear mark.",
+      "WearButton": "Add a wear mark",
+      "WearDone": "{name}: wear marks — {wear}",
+      "LuckButton": "Reroll with Luck",
+      "LuckReroll": "Luck reroll.",
+      "NoDC": "no DC (opposed)",
+      "Stat": "Stat",
+      "Modifier": "Modifier",
+      "Skill": "Skill",
+      "Untrained": "Untrained: stat only",
+      "Melee": "close combat (opposed)",
+      "NoRange": "not by range",
+      "Range": "Range",
+      "DCManual": "Custom DC",
+      "AttackWith": "Attack: {name}",
+      "NeedsMuscle": "Needs Muscle {n}",
+      "DamageOf": "Damage: {name}",
+      "DamageMode": "Damage",
+      "ExtraDice": "Extra dice",
+      "StrengthBonus": "with strength bonus",
+      "Damage": "Damage",
+      "Attack": "Attack",
+      "Explode": "Rolled 10: extra d10",
+      "Implode": "Rolled 1: minus d10",
+      "Total": "Total",
+      "ShowDetail": "Show the breakdown",
+      "SumLine": "Total added to the d10",
+      "Idol": "The target knows you (“Idol”)",
+      "DCShift": "{name}: DC {from} → {to}",
+      "Situational": "Situational modifiers",
+      "LoadedWith": "Ammo: {name}",
+      "Aimed": "aimed",
+      "HalfArmor": "Ignores half armor",
+      "ApplyButton": "Apply damage to target",
+      "ApplyTitle": "Apply damage: {n}",
+      "ApplyTo": "Targets: {names}",
+      "Location": "Hit location",
+      "HeadDouble": "Head: damage ×2, helmet only",
+      "ApplyConfirm": "Apply",
+      "Applied": "−{taken} HP (armor absorbed {soak}). HP: {hp0} → {hp1}.",
+      "ArmorWorn": "Armor: {a0} → {a1}.",
+      "Down": "0 HP!",
+      "AppliedTitle": "Damage applied",
+      "ReloadFree": "Without tracking ammo",
+      "ReloadTitle": "Load: {name}",
+      "ReloadNone": "No matching ammo in your gear.",
+      "ReloadWith": "Ammo to load",
+      "WeaponMods": "Weapon modifications",
+      "SentToGM": "Request sent to the GM, who will apply the damage."
+    },
+    "Warn": {
+      "NoLuck": "No Luck left.",
+      "Empty": "{name}: the magazine is empty.",
+      "NotEnoughAmmo": "{name}: needs {n} rounds.",
+      "NoDamage": "{name}: this item deals no damage.",
+      "DropType": "This item can't go here.",
+      "NoTarget": "Target a token (T key) or select it.",
+      "NotOwner": "{name}: only the GM or the owner can apply damage.",
+      "NotYours": "This sheet isn't yours: only its owner can roll and edit.",
+      "NoAmmo": "{name}: no matching ammo in your gear.",
+      "NoGM": "No GM online: nobody can apply damage to someone else's token."
+    },
+    "Cond": {
+      "seriousWound": "Serious wound",
+      "unconscious": "Knocked out",
+      "dying": "Dying"
+    },
+    "Npc": {
+      "ArmorNote": "Worn",
+      "Gear": "Weapons and gear",
+      "Special": "Special",
+      "EditSkills": "Edit skills",
+      "NoSkills": "No skills yet. Click the pencil to set levels."
+    },
+    "Business": {
+      "ProblemRoll": "Racket trouble",
+      "About": "Overview",
+      "Kind": "Kind",
+      "Type": "Line of work",
+      "Owner": "Owner",
+      "Location": "Location",
+      "Profit": "Profit",
+      "Total": "Total",
+      "Launders": "Launders",
+      "Special": "Special",
+      "Risk": "Risk",
+      "Income": "Income",
+      "Manager": "Manager",
+      "Share": "Cut, %",
+      "Problem": "Trouble"
+    },
+    "BusinessKind": {
+      "business": "Business",
+      "enterprise": "Racket"
+    },
+    "Item": {
+      "Delete": "Delete",
+      "DeleteConfirm": "Delete “{name}”?",
+      "Add": "Add",
+      "Equipped": "Equipped",
+      "Effect": "Effect",
+      "Trade": "Price and quantity",
+      "PriceOfficial": "Official price, $",
+      "PriceBlack": "Black market price, $",
+      "Quantity": "Quantity",
+      "Description": "Description",
+      "PriceLine": "Price, official / black market",
+      "PriceOfficialShort": "Official price",
+      "PriceBlackShort": "Black market",
+      "EditDescription": "Edit description",
+      "NoDescription": "No description."
+    },
+    "Sheet": {
+      "ChangePortrait": "Change portrait",
+      "ChangeImage": "Change image",
+      "ChangeToken": "Change token image",
+      "Token": "Token",
+      "Name": "Name",
+      "Alias": "Alias",
+      "Concept": "Concept",
+      "Wanted": "Wanted",
+      "Reputation": "Reputation",
+      "XP": "XP",
+      "Luck": "Luck",
+      "Max": "max",
+      "HP": "HP",
+      "HPBonus": "bonus",
+      "StrengthBonus": "Strength bonus",
+      "Move": "Move",
+      "Sprint": "sprint",
+      "Armor": "Armor",
+      "Injuries": "Injuries",
+      "Weapons": "Weapons",
+      "ArmorItems": "Armor",
+      "AmmoMods": "Ammo and mods",
+      "Gear": "Gear",
+      "Vehicles": "Vehicles",
+      "Money": "Money and housing",
+      "DropHint": "Drag an item here from a compendium.",
+      "NoAbilities": "No abilities yet.",
+      "Followers": "Followers",
+      "PrecinctTrust": "Precinct trust",
+      "Cash": "Cash (dirty), $",
+      "Card": "Card (clean), $",
+      "Housing": "Housing",
+      "Lifestyle": "Lifestyle",
+      "Debts": "Debts",
+      "Identity": "Identity",
+      "Origin": "Origin",
+      "Player": "Player",
+      "Appearance": "Appearance",
+      "Biography": "Biography",
+      "BioMain": "What matters most",
+      "BioGoals": "Goals",
+      "BioChildhood": "Childhood",
+      "BioStory": "Story",
+      "People": "People",
+      "Friends": "Friends",
+      "Enemies": "Enemies",
+      "Lovers": "Lovers",
+      "Contacts": "Contacts",
+      "Law": "The Law",
+      "FbiAssigned": "FBI agent assigned",
+      "FbiTemper": "Agent's temper",
+      "Record": "Criminal record",
+      "GunLicense": "Gun license",
+      "FakeId": "Fake ID",
+      "Notes": "Notes",
+      "FbiEvidence": "Evidence in the FBI file",
+      "Dossier": "Personal file",
+      "Stats": "Stats",
+      "Health": "Health",
+      "HPNowMax": "HP · now / max",
+      "Effects": "Effects",
+      "EffectsActive": "active",
+      "AddEffect": "Add effect",
+      "VehicleHint": "Drag a vehicle here from the actors list to assign it to this character.",
+      "MoveShort": "Move, m",
+      "StrengthShort": "Str. bonus"
+    },
+    "Reputation": {
+      "0": "disgrace",
+      "1": "shady",
+      "2": "ordinary",
+      "3": "respected",
+      "4": "spotless"
+    },
+    "Armor": {
+      "body": "Body",
+      "head": "Head",
+      "shield": "Shield"
+    },
+    "Injury": {
+      "armL": "Left arm",
+      "armR": "Right arm",
+      "legL": "Left leg",
+      "legR": "Right leg"
+    },
+    "Archetype": {
+      "enforcer": "Enforcer",
+      "grifter": "Grifter",
+      "tech": "Tech & Intel",
+      "media": "Media",
+      "lawman": "Lawman"
+    },
+    "Refresh": {
+      "constant": "always on",
+      "fight": "once per fight",
+      "session": "once per session",
+      "week": "once a week",
+      "month": "once a month",
+      "job": "once per job",
+      "target": "once per target",
+      "trust": "costs precinct trust"
+    },
+    "Weapon": {
+      "StrengthOnly": "strength bonus",
+      "Category": "Category",
+      "Skill": "Skill",
+      "RangeClass": "Range table",
+      "NoRangeClass": "none (close combat)",
+      "Damage": "Damage",
+      "DamageAlt": "Damage, second mode",
+      "Strength": "Forceful: + strength bonus",
+      "Magazine": "Magazine",
+      "Quality": "Quality",
+      "Wear": "Wear marks",
+      "MinMuscle": "Needs Muscle",
+      "Legal": "Legal status",
+      "Properties": "Properties",
+      "Reload": "Reload",
+      "AmmoKind": "Ammo",
+      "Loaded": "Loaded with",
+      "LoadedHalf": "Armor-piercing loaded"
+    },
+    "WeaponCategory": {
+      "melee": "Melee and fists",
+      "pistols": "Pistols and revolvers",
+      "shotguns": "Shotguns",
+      "smg": "SMGs",
+      "rifles": "Rifles and machine guns",
+      "sniper": "Sniper and hunting rifles",
+      "heavy": "Heavy weapons",
+      "explosives": "Grenades, explosives, fire",
+      "bows": "Bows and crossbows",
+      "nonlethal": "Non-lethal",
+      "unique": "Unique"
+    },
+    "Quality": {
+      "none": "none",
+      "cheap": "Junk",
+      "normal": "Standard",
+      "fine": "Fine"
+    },
+    "Legal": {
+      "registered": "Registered",
+      "illegal": "Illegal"
+    },
+    "ArmorItem": {
+      "Class": "Class",
+      "Requires": "Requires",
+      "Penalty": "Penalty",
+      "Visible": "Noticeable"
+    },
+    "Mod": {
+      "Target": "For",
+      "AppliesTo": "Fits",
+      "Installed": "Installed",
+      "AttachedTo": "Fitted to",
+      "NotAttached": "not fitted",
+      "AttackBonus": "Attack bonus",
+      "RangeMin": "Works from range",
+      "RangeMax": "Works up to range",
+      "AnyRange": "no limit"
+    },
+    "ModTarget": {
+      "weapon": "Weapon",
+      "vehicle": "Vehicle"
+    },
+    "Gear": {
+      "Category": "Category"
+    },
+    "GearCategory": {
+      "medicine": "Medicine and chemistry",
+      "tools": "Break-in and tools",
+      "electronics": "Electronics and comms",
+      "surveillance": "Surveillance",
+      "disguise": "Disguise and traces",
+      "job": "For the job",
+      "other": "Other"
+    },
+    "Vehicle": {
+      "Class": "Class",
+      "Speed": "Speed",
+      "Handling": "Handling",
+      "Seats": "Seats",
+      "Properties": "Features",
+      "Mods": "Modifications",
+      "Papers": "Papers",
+      "Status": "Status",
+      "Plate": "Plate",
+      "RegisteredTo": "Registered to",
+      "Reported": "Reported stolen",
+      "Tracker": "Tracker",
+      "Wheels": "Wheels and consumables",
+      "TireFL": "front left",
+      "TireFR": "front right",
+      "TireRL": "rear left",
+      "TireRR": "rear right",
+      "Spare": "Spare tire",
+      "Nitro": "Nitro",
+      "Spikes": "Spikes",
+      "Rockets": "Rockets",
+      "Passport": "Vehicle papers",
+      "Owner": "Held by",
+      "Consumables": "Consumables",
+      "Flat": "Flat tires",
+      "Installed": "Installed and on board",
+      "HPMax": "HP, maximum",
+      "ArmorMax": "Armor, maximum"
+    },
+    "VehicleClass": {
+      "cars": "Cars",
+      "sports": "Sports and muscle cars",
+      "suvs": "SUVs and pickups",
+      "vans": "Vans and trucks",
+      "bikes": "Motorcycles and bicycles",
+      "service": "Service vehicles",
+      "boats": "Boats",
+      "helicopters": "Helicopters",
+      "planes": "Planes"
+    },
+    "VehicleStatus": {
+      "own": "Owned",
+      "stolen": "Stolen",
+      "replated": "Replated"
+    },
+    "Tree": {
+      "And": "AND",
+      "Or": "OR",
+      "PathA": "Path A",
+      "PathB": "Path B",
+      "Lvl": "lvl",
+      "Used": "used",
+      "None": "No archetypes yet. Add the first one.",
+      "Add": "Add archetype",
+      "Remove": "Remove archetype",
+      "enforcer": {
+        "1a": {
+          "name": "Dead On",
+          "desc": "+4 to aimed shots and aimed strikes"
+        },
+        "2a": {
+          "name": "Akimbo",
+          "desc": "With two pistols — two attacks per action, −4 to each. With two SMGs — one burst at −4: it adds 2d6 to damage instead of 1d6 and spends 10 rounds from each"
+        },
+        "2b": {
+          "name": "One-Two",
+          "desc": "Two strikes with a fist or a light weapon in one action"
+        },
+        "3a": {
+          "name": "Quick Reflexes",
+          "desc": "+4 to Initiative"
+        },
+        "4a": {
+          "name": "Long Burst",
+          "desc": "+4 to burst rolls"
+        },
+        "4b": {
+          "name": "Everything Is a Weapon",
+          "desc": "Any object in your hand — a bottle, a chair, a frying pan — is a light weapon for you, Forceful. And any light melee weapon in your hands hits like a medium one: 2d6"
+        },
+        "5a": {
+          "name": "Gotcha",
+          "desc": "A target that leaned out of cover to shoot gives you no −4 penalty"
+        },
+        "5b": {
+          "name": "Not Only Cowards Hit from Behind",
+          "desc": "A melee strike from behind or from ambush deals ×2 damage"
+        },
+        "6a": {
+          "name": "Duelist",
+          "desc": "In a one-on-one fight you act first, whatever the Initiative"
+        },
+        "7a": {
+          "name": "Fast Reload",
+          "desc": "Reloading is free, once per turn. A Slow Reload takes one action"
+        },
+        "7b": {
+          "name": "Iron Body",
+          "desc": "+10 to maximum HP"
+        },
+        "8a": {
+          "name": "Eagle Eye",
+          "desc": "Range DCs are one step lower for you: 27 → 21, 21 → 17, 17 → 13, 13 → 9"
+        },
+        "8b": {
+          "name": "Bouncer",
+          "desc": "Every hit in melee knocks the target down"
+        },
+        "9a": {
+          "name": "Wall of Fire",
+          "desc": "Suppressing fire is a 60 m cone instead of 30"
+        },
+        "9b": {
+          "name": "Counterpunch",
+          "desc": "An enemy missed you in melee — you hit back at once, for free"
+        },
+        "10a": {
+          "name": "One-Man Army",
+          "desc": "Two actions per round"
+        }
+      },
+      "grifter": {
+        "1a": {
+          "name": "Connections",
+          "desc": "You know who sells what on your own city's black market — no check needed. In another city: Cool + Streetwise, DC 13"
+        },
+        "2a": {
+          "name": "Your Own Fence",
+          "desc": "Fences pay you 50% of the official price instead of 30%"
+        },
+        "2b": {
+          "name": "Offshore",
+          "desc": "The money on your card can't be seized, and debts aren't deducted from it automatically"
+        },
+        "3a": {
+          "name": "Another Angle",
+          "desc": "Failed a Deception, Persuasion or Haggling check — you may try again at once with a different approach. Once per target"
+        },
+        "4a": {
+          "name": "Best Friend for the Evening",
+          "desc": "An evening of talk, Cool + Deception against Brains + Insight: the NPC considers you a friend — shares secrets, lets you into the house. On a failure they're on their guard"
+        },
+        "4b": {
+          "name": "Shell Company",
+          "desc": "Once a month you can pay for one purchase with dirty money as if it were clean: it's put through a front company"
+        },
+        "5a": {
+          "name": "Lucky",
+          "desc": "A third Luck point per session"
+        },
+        "6a": {
+          "name": "Your Own Guys",
+          "desc": "Hiring NPC muscle costs half as much (prices — economy, section 4)"
+        },
+        "6b": {
+          "name": "People Are Everything",
+          "desc": "Workers at your businesses and rackets don't steal and don't snitch: troubles 3, 6 and 8 on the trouble table are rerolled"
+        },
+        "7a": {
+          "name": "At Home Anywhere",
+          "desc": "The “Dressed for the Part” penalties don't apply to you: you fit in anywhere (economy, section 3)"
+        },
+        "7b": {
+          "name": "Hostile Takeover",
+          "desc": "Once a month, Brains + Business, DC 21: someone else's business becomes yours for half its price. On paper it's all clean"
+        },
+        "8a": {
+          "name": "Just Passing By",
+          "desc": "As long as you haven't fired a shot or thrown a punch, witnesses don't remember you: no wanted level is called on you"
+        },
+        "8b": {
+          "name": "Board of Directors",
+          "desc": "One manager of an illegal racket works for 0%. The others are more agreeable: talking their cut down is one step easier"
+        },
+        "9a": {
+          "name": "Man Without a Past",
+          "desc": "Once a month you can change your identity for free: documents, looks, cover story. Your wanted level resets, witnesses no longer recognize you"
+        },
+        "9b": {
+          "name": "Your Own Company",
+          "desc": "Your own business brings in twice the profit"
+        },
+        "10a": {
+          "name": "The Greatest Con",
+          "desc": "A fourth Luck point. After a reroll you choose either of the results"
+        }
+      },
+      "tech": {
+        "1a": {
+          "name": "Golden Hands",
+          "desc": "You make repairs yourself and for free: armor in 1 hour, Brains + Electronics, DC 13; a car with no money for parts"
+        },
+        "1b": {
+          "name": "City on the Line",
+          "desc": "An action, Brains + Computers, DC 13: within 50 m, open or lock an electronic door, an elevator or a barrier, or switch a traffic light. Guarded systems — DC 17"
+        },
+        "2a": {
+          "name": "Do It Yourself",
+          "desc": "You build any item from the gear and weapon lists using the “Assembly” rules"
+        },
+        "2b": {
+          "name": "Phone Hack",
+          "desc": "Brains + Computers, DC 17. A phone within 50 m — an action; by number — 10 minutes. Until the end of the day you read its messages, listen to its calls and see where the phone is"
+        },
+        "3a": {
+          "name": "Inventor",
+          "desc": "Using “Assembly” you create your own items that aren't on the lists, and your own weapons"
+        },
+        "3b": {
+          "name": "Eyes in the Cameras",
+          "desc": "An action, Brains + Computers, DC 17: you see through every camera within 50 m and erase the recordings. An erased camera is no witness"
+        },
+        "4a": {
+          "name": "Upgrade",
+          "desc": "Raise a weapon's quality by one step: a week of work, Brains + Gunsmithing, DC 17, parts cost half the price"
+        },
+        "4b": {
+          "name": "Backdoor",
+          "desc": "A device you have hacked even once stays open. You get into it from anywhere in the city without a roll until the owner replaces the device"
+        },
+        "5a": {
+          "name": "Garage Genius",
+          "desc": "You fit vehicle modifications yourself — in an hour and at half price"
+        },
+        "5b": {
+          "name": "Admin Rights",
+          "desc": "The DC of your hacking actions is one step lower: 21 → 17, 17 → 13, 13 → 9"
+        },
+        "6a": {
+          "name": "Demolition Man",
+          "desc": "The blast zone of your bombs and charges is one step larger (6 × 6 → 10 × 10 m)"
+        },
+        "6b": {
+          "name": "Digital Trail",
+          "desc": "Once a month, erase one piece of evidence in the FBI agent's file from the databases"
+        },
+        "7a": {
+          "name": "Sapper",
+          "desc": "Your bombs and charges don't go off early"
+        },
+        "7b": {
+          "name": "Ghost",
+          "desc": "Cameras don't capture you. Your outline is always blurred on them"
+        },
+        "8a": {
+          "name": "Spit and Duct Tape",
+          "desc": "An action: a broken or destroyed item works for 10 more minutes — a car at 0 HP drives, a smashed phone makes calls"
+        },
+        "8b": {
+          "name": "Botnet",
+          "desc": "Hacking abilities that work within 50 m work anywhere in the city for you"
+        },
+        "9a": {
+          "name": "Gold Standard",
+          "desc": "Everything you build is of Fine quality or gets one extra property for free. Worse only if you want it to be"
+        },
+        "9b": {
+          "name": "Blackout",
+          "desc": "An action, DC 21: lights, comms and cameras go out across the block. The darkness holds as long as you spend every following turn on this action. While it's dark nobody can reach 911 and the wanted level doesn't rise"
+        }
+      },
+      "media": {
+        "1a": {
+          "name": "Your Own Audience",
+          "desc": "Your releases bring in followers — see the “Audience” rules above"
+        },
+        "2a": {
+          "name": "Source",
+          "desc": "When you dig into someone or something, the GM gives you at least one confirmed fact whatever the roll"
+        },
+        "2b": {
+          "name": "Fans",
+          "desc": "Once per session a fan helps with something small: gives you a lift, puts you up for the night, distracts a cop"
+        },
+        "3a": {
+          "name": "Press Pass",
+          "desc": "At ⭐ the cops check your papers and let you go"
+        },
+        "4a": {
+          "name": "Spin",
+          "desc": "Any release can be made into spin, DC 17: a person's or a business's reputation goes one step up or down. Such a release brings no followers. On a failure nothing happens"
+        },
+        "4b": {
+          "name": "Fan Club",
+          "desc": "Once per session 2d6 fans gather wherever you say. They won't fight"
+        },
+        "5a": {
+          "name": "Content Machine",
+          "desc": "Two releases a week instead of one"
+        },
+        "6a": {
+          "name": "Leak",
+          "desc": "Once a month a release can be made into a leak about a business or a racket, DC 17: this month it earns nothing — inspections, searches, reporters at the door"
+        },
+        "6b": {
+          "name": "Devoted",
+          "desc": "Fans break the law in small ways for you: lie to cops, hide things, testify in your favor"
+        },
+        "7a": {
+          "name": "Fourth Estate",
+          "desc": "“Spin” can be aimed at a cop, a judge, an official or an FBI agent. At a “Shady” reputation they get −2 to all checks against you and your gang; at “Disgrace” — −4"
+        },
+        "7b": {
+          "name": "Fan Security",
+          "desc": "Once per session 2d6 fans stand up for you: they fight with whatever they have — usually fists and bats, though someone will have a gun — and shield you with their bodies"
+        },
+        "8a": {
+          "name": "Scoop",
+          "desc": "A “Spin” release also brings in followers"
+        },
+        "8b": {
+          "name": "Idol",
+          "desc": "+4 to Persuasion against those who know you"
+        },
+        "9a": {
+          "name": "High-Profile Case",
+          "desc": "Once a month, Brains + Deduction, DC 17: the FBI agent handling you is taken off the case, and the new one gets only half the file. On a failure nothing happens"
+        },
+        "9b": {
+          "name": "Anything for the Idol",
+          "desc": "Once per session a fan carries out one serious errand: steal a car, lift an item, beat someone up. If caught, they won't give you up"
+        },
+        "10a": {
+          "name": "The Cameraman Never Dies",
+          "desc": "While you're streaming or filming, nobody opens fire on you unless you shot first"
+        }
+      },
+      "lawman": {
+        "1a": {
+          "name": "Call It In",
+          "desc": "You call the cops — see the “Calling the cops” rules above"
+        },
+        "2a": {
+          "name": "Badge",
+          "desc": "The badge passes a cop check: they treat you as an ally as long as you don't break the law or enter guarded premises"
+        },
+        "2b": {
+          "name": "Attorney–Client Privilege",
+          "desc": "Wiretaps and recordings of your conversations don't become evidence against you or your clients"
+        },
+        "3a": {
+          "name": "Anonymous Tip",
+          "desc": "Once per session, put the police onto a competitor: they get ⭐⭐ and a search"
+        },
+        "4a": {
+          "name": "Friends at the Precinct",
+          "desc": "Once per session, find out what the cops know about a case: evidence, suspects, wanted level"
+        },
+        "4b": {
+          "name": "Your Own Judge",
+          "desc": "Bribing a judge costs half as much — for a lenient sentence or a harsh one"
+        },
+        "5a": {
+          "name": "Released on Recognizance",
+          "desc": "Someone arrested at ⭐⭐⭐ can be bailed out — $1,000 per wanted level, as at ⭐–⭐⭐"
+        },
+        "6a": {
+          "name": "Service Issue",
+          "desc": "A gun and a vest from the precinct. The weapon is Registered to the precinct: the bullets lead there"
+        },
+        "6b": {
+          "name": "Inadmissible Evidence",
+          "desc": "Once a month one piece of evidence in the FBI agent's file against you or a client disappears"
+        },
+        "7a": {
+          "name": "Backup",
+          "desc": "The cops you call in follow your orders"
+        },
+        "7b": {
+          "name": "Prison Mail",
+          "desc": "You know who to talk to in any prison, and the prices are fixed. Against someone inside: $1,000 to pass on a message or an item, $5,000 for a beating (4d6 damage), $20,000 to have them removed"
+        },
+        "8a": {
+          "name": "Warrant",
+          "desc": "Once per session, a search of a target: the cops seize everything illegal, and every find is evidence against them"
+        },
+        "8b": {
+          "name": "Reasonable Doubt",
+          "desc": "When you defend yourself or a client in court, each piece of evidence gives the defense −1 instead of −2"
+        },
+        "9a": {
+          "name": "Blue Wall",
+          "desc": "As long as you have no more than ⭐⭐, the cops don't arrest you: they don't give up their own"
+        },
+        "9b": {
+          "name": "Appeal",
+          "desc": "A lost trial — yours or a client's — can be appealed: the defense roll is repeated. Once per case"
+        },
+        "10a": {
+          "name": "I Am the Law",
+          "desc": "Once per session, put a person on the wanted list: they get ⭐⭐⭐ and the cops look for them all over the city"
+        },
+        "10b": {
+          "name": "Forewarned",
+          "desc": "You learn of an arrest or search warrant against you or a client a day ahead. If another player's ability sends a warrant, a search or a wanted level your way, it takes effect only a day later, and you know about it at once"
+        }
+      }
+    },
+    "Effect": {
+      "all": "All checks",
+      "attack": "Attacks",
+      "none": "No modifier",
+      "Target": "Applies to",
+      "Active": "Active"
+    },
+    "AmmoKind": {
+      "pistol": "Pistol and SMG",
+      "rifle": "Rifle",
+      "shotgun": "Shotgun",
+      "arrow": "Arrows and bolts",
+      "sniper": "Sniper",
+      "heavy": "Heavy caliber",
+      "grenade": "Launcher grenades",
+      "rocket": "Rockets",
+      "any": "Any caliber"
+    },
+    "Ammo": {
+      "Kind": "Ammo type",
+      "HalfArmor": "Ignore half armor",
+      "DiceMod": "Damage dice ±"
+    },
+    "Adv": {
+      "Title": "Advancement: {name}",
+      "Open": "Advance",
+      "OpenHint": "Spend XP on skills and development points. The badge shows unspent XP.",
+      "EarnedHint": "XP earned in play. The starting 1000 XP for skills is not included.",
+      "Budget": "Total XP",
+      "Skills": "Skills, XP",
+      "Points": "Development points",
+      "FreeExtra": "3 free, extra:",
+      "Left": "Left",
+      "Creation": "Character creation",
+      "Earned": "Earned in play",
+      "Cap": "Skill cap",
+      "StatsNote": "25 points across four stats, each from 2 to 10. HP = 10 + Muscle × 2.",
+      "StatsLocked": "Stats don't grow with XP: they can be changed only during character creation.",
+      "StatsLeft": "Unassigned",
+      "SkillsNote": "Level N costs N × 10 XP. Basic skills start at 2 for free (in brackets), your native language at 4, English at 2. The right column shows XP already spent on the skill. Shift — two levels at once.",
+      "ArchNote": "One development point — one ability. Three points are free (at creation: 3 in one archetype or 2 and 1), each next one costs 100 XP. A level opens once an ability of the previous level is taken; OR closes the other path.",
+      "Tab": {
+        "stats": "Stats",
+        "skills": "Skills",
+        "archetypes": "Archetypes"
+      },
+      "Native": "Native language: level 4 for free",
+      "NativeShort": "nat.",
+      "Reset": "Reset to basics",
+      "Apply": "Apply",
+      "AllGood": "Everything is by the rules.",
+      "BelowBase": "{name}: below the basic level {base}",
+      "LangBelowBase": "{name}: below the free level {base}",
+      "OverCap": "{name}: above the cap {cap}",
+      "NoName": {
+        "sciences": "A science with a level has no name",
+        "instruments": "An instrument with a level has no name"
+      },
+      "OneNative": "Exactly one native language is needed",
+      "English": "English must be at least 2",
+      "Scheme": "At creation the three points go 3 in one archetype or 2 and 1",
+      "StatSum": "Stats: {sum} of {need}",
+      "Over": "Not enough XP: {n} XP over",
+      "Saved": "Advancement saved.",
+      "SavedWithProblems": "Saved, but {n} rule issues remain."
+    },
+    "Problem": {
+      "1": {
+        "problem": "Neighbors complain about the noise, the smell and the odd visitors",
+        "solve": "$500 to the neighbors or Cool + Persuasion, DC 13"
+      },
+      "2": {
+        "problem": "Equipment broke down",
+        "solve": "$2,000 for parts or Brains + Electronics, DC 17"
+      },
+      "3": {
+        "problem": "A worker is stealing product or takings",
+        "solve": "Find out who: Brains + Insight, DC 13. What to do with them is your call"
+      },
+      "4": {
+        "problem": "The supplier missed a delivery",
+        "solve": "Find a new one: Cool + Streetwise, DC 17. Or find out who bought off the old one"
+      },
+      "5": {
+        "problem": "The beat cop suspects something",
+        "solve": "A bribe from $2,000 or get rid of whatever he noticed"
+      },
+      "6": {
+        "problem": "A worker quit and talks too much",
+        "solve": "Find them and make them keep quiet: money, threats or something worse"
+      },
+      "7": {
+        "problem": "A local gang wants a cut",
+        "solve": "Pay 20% of the income every month or talk to the gang another way: a fight"
+      },
+      "8": {
+        "problem": "A worker got arrested",
+        "solve": "Get them out: bail and a lawyer. Or make sure they don't talk"
+      },
+      "9": {
+        "problem": "A journalist is working on a story",
+        "solve": "Buy them, scare them or slip them a juicier story"
+      },
+      "10": {
+        "problem": "Competitors cleaned the place out: product and takings are gone",
+        "solve": "Take it back: a raid on the competitors"
+      },
+      "11": {
+        "problem": "A detective opened a case",
+        "solve": "A bribe from $5,000 or destroy the evidence"
+      },
+      "12": {
+        "problem": "War: competitors want the whole market",
+        "solve": "Skirmishes and raids until one side gives up or runs out"
+      },
+      "13": {
+        "problem": "Raid: the police or the FBI are preparing a bust",
+        "solve": "One week to move the equipment and cover the tracks. Too late — the racket is lost, and everyone caught on site gets three wanted stars"
+      }
+    },
+    "Path": {
+      "enforcer": {
+        "a": "Gunman",
+        "b": "Bruiser"
+      },
+      "grifter": {
+        "a": "Hustler",
+        "b": "Manager"
+      },
+      "tech": {
+        "a": "Technician",
+        "b": "Hacker"
+      },
+      "media": {
+        "a": "Journalist",
+        "b": "Star"
+      },
+      "lawman": {
+        "a": "Cop",
+        "b": "Lawyer"
+      }
+    }
+  }
+}

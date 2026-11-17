@@ -1,0 +1,220 @@
+<div class="sb-root">
+  <header class="sb-top">
+    <div class="sb-wm">{{localize "SCUMBAGS.Wordmark"}}</div>
+    <span class="sb-plate line">{{localize "SCUMBAGS.Sheet.Dossier"}}</span>
+    <div class="sb-top-f grow">
+      <span class="sb-lbl">{{localize "SCUMBAGS.Sheet.Wanted"}}</span>
+      <span class="sb-pips stars">{{#each wanted}}<a class="sb-star {{#if on}}on{{/if}}" data-action="setPips" data-field="system.wanted" data-value="{{value}}"><i class="{{#if on}}fa-solid{{else}}fa-regular{{/if}} fa-star"></i></a>{{/each}}</span>
+    </div>
+    <label class="sb-top-f"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.Reputation"}}</span><select name="system.reputation">{{selectOptions repOptions selected=system.reputation}}</select></label>
+    <label class="sb-top-f" title="{{localize 'SCUMBAGS.Adv.EarnedHint'}}"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.XP"}}</span><input class="sb-mini" type="number" name="system.xp" value="{{system.xp}}" min="0" step="1"></label>
+    {{#if editable}}<a class="sb-btn adv-open" data-action="advancement" title="{{localize 'SCUMBAGS.Adv.OpenHint'}}"><i class="fa-solid fa-arrow-trend-up"></i> {{localize "SCUMBAGS.Adv.Open"}} <span class="adv-free {{#if (lt freeXP 0)}}bad{{/if}}">{{freeXP}}</span></a>{{/if}}
+  </header>
+
+  <section class="sb-grid main">
+    <img class="sb-portrait" src="{{actor.img}}" data-action="sbEditImage" data-edit="img" alt="" title="{{localize 'SCUMBAGS.Sheet.ChangePortrait'}}">
+    <div class="sb-panel">
+      <span class="sb-plate">{{localize "SCUMBAGS.Sheet.Identity"}}</span>
+      <div class="sb-fields two">
+        <label class="sb-f wide"><span>{{localize "SCUMBAGS.Sheet.Name"}}</span><input class="sb-name" type="text" name="name" value="{{actor.name}}"></label>
+        <label class="sb-f wide"><span>{{localize "SCUMBAGS.Sheet.Alias"}}</span><input type="text" name="system.alias" value="{{system.alias}}"></label>
+        <label class="sb-f"><span>{{localize "SCUMBAGS.Sheet.Cash"}}</span><input class="sb-big" type="number" name="system.money.cash" value="{{system.money.cash}}" step="1"></label>
+        <label class="sb-f"><span>{{localize "SCUMBAGS.Sheet.Card"}}</span><input class="sb-big" type="number" name="system.money.card" value="{{system.money.card}}" step="1"></label>
+      </div>
+    </div>
+    <div class="sb-panel">
+      <span class="sb-plate">{{localize "SCUMBAGS.Sheet.Stats"}}</span>
+      {{#each stats}}
+      <div class="sb-statrow">
+        <a class="sb-statname" data-action="rollStat" data-stat="{{key}}" title="{{localize 'SCUMBAGS.Roll.Roll'}}">{{label}}</a>
+        <input class="sb-box-num" type="number" name="system.stats.{{key}}" value="{{value}}" min="1" max="10" step="1">
+      </div>
+      {{/each}}
+      <div class="sb-statrow">
+        <span class="sb-statname plain">{{localize "SCUMBAGS.Sheet.Luck"}}</span>
+        <span class="sb-pips big">{{#each luck}}<a class="sb-pip {{#if on}}on{{/if}}" data-action="setPips" data-field="system.luck.value" data-value="{{value}}"></a>{{/each}}</span>
+      </div>
+    </div>
+    <div class="sb-panel">
+      <span class="sb-plate">{{localize "SCUMBAGS.Sheet.Health"}}</span>
+      <div class="sb-health">
+        <div class="sb-hp wide">
+          <span class="sb-lbl">{{localize "SCUMBAGS.Sheet.HPNowMax"}}</span>
+          <span class="sb-pool big"><input class="sb-box-num" type="number" name="system.hp.value" value="{{system.hp.value}}" min="0" step="1"><i>/</i><b class="sb-box-num ro">{{system.hp.max}}</b></span>
+        </div>
+        <div class="sb-hp"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.StrengthBonus"}}</span><b class="sb-box-num ro">{{system.strengthBonus}}</b></div>
+        <div class="sb-hp"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.Move"}} <small>/ {{localize "SCUMBAGS.Sheet.Sprint"}}</small></span><span class="sb-pool"><b class="sb-box-num ro">{{system.move}}</b><i>/</i><b class="sb-box-num ro">{{system.sprint}}</b></span></div>
+        <div class="sb-conds">
+          <label class="sb-tick"><input type="checkbox" name="system.conditions.seriousWound" {{checked system.conditions.seriousWound}}>{{localize "SCUMBAGS.Cond.seriousWound"}}</label>
+          <label class="sb-tick"><input type="checkbox" name="system.conditions.unconscious" {{checked system.conditions.unconscious}}>{{localize "SCUMBAGS.Cond.unconscious"}}</label>
+          <span class="sb-tick red">{{localize "SCUMBAGS.Cond.dying"}} <span class="sb-pips">{{#each dying}}<a class="sb-pip {{#if on}}on{{/if}}" data-action="setPips" data-field="system.conditions.dying" data-value="{{value}}"></a>{{/each}}</span></span>
+        </div>
+        <div class="sb-conds inj">
+          <span class="sb-lbl">{{localize "SCUMBAGS.Sheet.Injuries"}}</span>
+          {{#each injuries}}<label class="sb-tick"><input type="checkbox" name="{{name}}" {{checked value}}>{{label}}</label>{{/each}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sb-panel sb-armor3">
+    <span class="sb-plate">{{localize "SCUMBAGS.Sheet.Armor"}}</span>
+    {{#each armor}}
+    <div class="sb-armorrow" {{#if has}}data-item-id="{{itemId}}"{{/if}}>
+      <span class="sb-statname plain">{{label}}</span>
+      <span class="sb-armorname">{{#if has}}{{name}}{{else}}—{{/if}}</span>
+      {{#if has}}<span class="sb-pool"><input class="sb-box-num sm" type="number" data-field="system.{{key}}.value" value="{{value}}" min="0" step="1"><i>/</i><b class="sb-box-num sm ro">{{max}}</b></span>{{/if}}
+    </div>
+    {{/each}}
+  </section>
+
+  <details class="sb-panel sb-fx" data-ui="effects" {{#if ui.effects}}open{{/if}}>
+    <summary><span class="sb-plate">{{localize "SCUMBAGS.Sheet.Effects"}}</span><span class="sb-fx-n">{{localize "SCUMBAGS.Sheet.EffectsActive"}}: {{effectsOn}}</span></summary>
+    {{#each effects}}
+    <div class="sb-item fx" data-item-id="{{id}}">
+      <input type="checkbox" data-field="system.active" {{checked active}} title="{{localize 'SCUMBAGS.Effect.Active'}}">
+      <div class="sb-item-main"><a class="sb-item-name" data-action="itemEdit">{{name}}</a>{{#if description}}<div class="sb-item-sub">{{description}}</div>{{/if}}</div>
+      <div class="sb-item-ctl">{{#if mod}}<span class="sb-kv"><b>{{mod}}</b><em>{{target}}</em></span>{{/if}}<a class="sb-ico" data-action="itemDelete" title="{{localize 'SCUMBAGS.Item.Delete'}}"><i class="fa-solid fa-trash"></i></a></div>
+    </div>
+    {{/each}}
+    <a class="sb-btn light" data-action="itemCreate" data-type="effect"><i class="fa-solid fa-plus"></i> {{localize "SCUMBAGS.Sheet.AddEffect"}}</a>
+  </details>
+
+  <nav class="sb-tabs tabs" data-group="primary">
+    {{#each tabs}}<a data-action="tab" data-group="primary" data-tab="{{id}}" class="{{#if active}}active{{/if}}">{{label}}</a>{{/each}}
+  </nav>
+
+  <div class="sb-body">
+    {{!-- Навыки --}}
+    <section class="tab {{#if on.skills}}active{{/if}}" data-group="primary" data-tab="skills">
+      <div class="sb-skills">
+        {{#each columns}}
+        <div class="sb-col">
+          {{#each this}}
+          <div class="sb-panel tight">
+            <span class="sb-plate">{{label}}</span>
+            {{#each rows}}
+            {{#if custom}}
+            <div class="sb-skill custom {{#if untrained}}untrained{{/if}}">
+              <a class="sb-roll ico" data-action="rollCustom" data-group="{{group}}" data-slot="{{slot}}" title="{{localize 'SCUMBAGS.Roll.Roll'}}"><i class="fa-solid fa-dice-d10"></i></a>
+              <input type="text" name="system.{{group}}.{{slot}}.name" value="{{name}}" placeholder="{{placeholder}}">
+              <span class="sb-abbr">{{abbr}}</span>
+              <input type="number" name="system.{{group}}.{{slot}}.level" value="{{level}}" min="0" max="10" step="1">
+              <span class="sb-sum">{{total}}</span>
+            </div>
+            {{else}}
+            <div class="sb-skill {{#if untrained}}untrained{{/if}}">
+              <a class="sb-roll" data-action="rollSkill" data-skill="{{key}}" title="{{label}}">{{label}}</a>
+              <span class="sb-abbr">{{abbr}}</span>
+              <input type="number" name="system.skills.{{key}}.level" value="{{level}}" min="0" max="10" step="1">
+              <span class="sb-sum">{{total}}</span>
+            </div>
+            {{/if}}
+            {{/each}}
+          </div>
+          {{/each}}
+        </div>
+        {{/each}}
+      </div>
+    </section>
+
+    {{!-- Архетипы --}}
+    <section class="tab {{#if on.archetypes}}active{{/if}}" data-group="primary" data-tab="archetypes">
+      {{#each trees}}
+      <div class="sb-tree">
+        <div class="sb-tree-h">
+          <span class="sb-wm sm">{{label}}</span><span class="sb-level">{{level}}</span>
+          <a class="sb-ico" data-action="archRemove" data-arch="{{key}}" title="{{localize 'SCUMBAGS.Tree.Remove'}}"><i class="fa-solid fa-xmark"></i></a>
+        </div>
+        <div class="sb-tree-row head">
+          <span></span>
+          <div><span class="sb-tag">{{localize "SCUMBAGS.Tree.PathA"}}</span> <b>{{pathA}}</b></div>
+          <span></span>
+          <div><span class="sb-tag">{{localize "SCUMBAGS.Tree.PathB"}}</span> <b>{{pathB}}</b></div>
+        </div>
+        {{#each rows}}
+        <div class="sb-tree-row {{#if single}}single{{/if}}">
+          <div class="sb-tree-n"><small>{{localize "SCUMBAGS.Tree.Lvl"}}</small>{{n}}</div>
+          {{#each nodes}}
+          {{#if @index}}<div class="sb-tree-fork {{#if ../isOr}}or{{/if}} {{#unless ../fork}}none{{/unless}}">{{../fork}}</div>{{/if}}
+          <div class="sb-node {{#if checked}}on{{/if}} {{#if disabled}}off{{/if}}">
+            <label class="sb-node-h"><input type="checkbox" name="{{field}}" {{checked checked}} {{#if disabled}}disabled{{/if}}><b>«{{name}}»</b></label>
+            <div class="sb-node-d">{{desc}}</div>
+            {{#if refresh}}<label class="sb-tick sb-node-u"><input type="checkbox" name="{{usedField}}" {{checked used}}>{{refresh}} · {{localize "SCUMBAGS.Tree.Used"}}</label>{{/if}}
+          </div>
+          {{/each}}
+        </div>
+        {{/each}}
+        {{#if followers}}<div class="sb-fields"><label class="sb-f"><span>{{localize "SCUMBAGS.Sheet.Followers"}}</span><input type="number" name="system.followers" value="{{followers.value}}" min="0" step="1"></label></div>{{/if}}
+        {{#if trust}}<div class="sb-conds"><span class="sb-lbl">{{localize "SCUMBAGS.Sheet.PrecinctTrust"}}</span><span class="sb-pips">{{#each trust}}<a class="sb-pip {{#if on}}on{{/if}}" data-action="setPips" data-field="system.precinctTrust" data-value="{{value}}"></a>{{/each}}</span></div>{{/if}}
+      </div>
+      {{else}}<div class="sb-empty">{{localize "SCUMBAGS.Tree.None"}}</div>{{/each}}
+      {{#if archOptions}}
+      <div class="sb-archadd">
+        <select>{{selectOptions archOptions}}</select>
+        <a class="sb-btn" data-action="archAdd"><i class="fa-solid fa-plus"></i> {{localize "SCUMBAGS.Tree.Add"}}</a>
+      </div>
+      {{/if}}
+    </section>
+
+    {{!-- Снаряжение --}}
+    <section class="tab {{#if on.gear}}active{{/if}}" data-group="primary" data-tab="gear">
+      <div class="sb-panel">
+        <span class="sb-plate">{{localize "SCUMBAGS.Sheet.Weapons"}} <a class="sb-add" data-action="itemCreate" data-type="weapon" title="{{localize 'SCUMBAGS.Item.Add'}}"><i class="fa-solid fa-plus"></i></a></span>
+        {{#each weapons}}
+        <div class="sb-item draggable" data-item-id="{{id}}">
+          <img src="{{img}}" alt="" data-action="itemEdit">
+          <div class="sb-item-main"><a class="sb-item-name" data-action="itemEdit">{{name}}</a><div class="sb-item-sub">{{sub}}</div></div>
+          <div class="sb-item-ctl">
+            <a class="sb-btn" data-action="rollAttack">{{localize "SCUMBAGS.Roll.Attack"}} <b>{{bonus}}</b></a>
+            <a class="sb-btn" data-action="rollDamage">{{localize "SCUMBAGS.Roll.Damage"}} <b>{{damage}}</b></a>
+            {{#if usesAmmo}}<span class="sb-mag {{#if empty}}empty{{/if}}" title="{{loaded}}"><input type="number" data-field="system.magazine.value" value="{{mag}}" min="0" step="1"><i>/{{magMax}}</i></span><a class="sb-ico {{#if empty}}alert{{/if}}" data-action="reload" title="{{localize 'SCUMBAGS.Weapon.Reload'}}"><i class="fa-solid fa-rotate"></i></a>{{/if}}
+            {{#if hasQuality}}<span class="sb-pips" title="{{localize 'SCUMBAGS.Weapon.Wear'}}">{{#each wear}}<a class="sb-pip sq {{#if on}}on{{/if}}" data-action="setPips" data-field="system.wear" data-value="{{value}}"></a>{{/each}}</span>{{/if}}
+            <a class="sb-ico {{#if equipped}}on{{/if}}" data-action="itemToggle" data-field="system.equipped" title="{{localize 'SCUMBAGS.Item.Equipped'}}"><i class="fa-solid fa-hand"></i></a>
+            <a class="sb-ico" data-action="itemDelete" title="{{localize 'SCUMBAGS.Item.Delete'}}"><i class="fa-solid fa-trash"></i></a>
+          </div>
+        </div>
+        {{else}}<div class="sb-empty">{{localize "SCUMBAGS.Sheet.DropHint"}}</div>{{/each}}
+      </div>
+
+      <div class="sb-panel">
+        <span class="sb-plate">{{localize "SCUMBAGS.Sheet.ArmorItems"}} <a class="sb-add" data-action="itemCreate" data-type="armor" title="{{localize 'SCUMBAGS.Item.Add'}}"><i class="fa-solid fa-plus"></i></a></span>
+        {{#each armorItems}}{{> "systems/scumbags/templates/item-row.hbs"}}{{else}}<div class="sb-empty">{{localize "SCUMBAGS.Sheet.DropHint"}}</div>{{/each}}
+      </div>
+
+      <div class="sb-grid two">
+        <div class="sb-panel">
+          <span class="sb-plate">{{localize "SCUMBAGS.Sheet.AmmoMods"}} <a class="sb-add" data-action="itemCreate" data-type="ammo" title="{{localize 'SCUMBAGS.Item.Add'}}"><i class="fa-solid fa-plus"></i></a></span>
+          {{#each ammo}}{{> "systems/scumbags/templates/item-row.hbs"}}{{else}}<div class="sb-empty">{{localize "SCUMBAGS.Sheet.DropHint"}}</div>{{/each}}
+        </div>
+        <div class="sb-panel">
+          <span class="sb-plate">{{localize "SCUMBAGS.Sheet.Gear"}} <a class="sb-add" data-action="itemCreate" data-type="gear" title="{{localize 'SCUMBAGS.Item.Add'}}"><i class="fa-solid fa-plus"></i></a></span>
+          {{#each gear}}{{> "systems/scumbags/templates/item-row.hbs"}}{{else}}<div class="sb-empty">{{localize "SCUMBAGS.Sheet.DropHint"}}</div>{{/each}}
+        </div>
+      </div>
+
+      <div class="sb-panel">
+        <span class="sb-plate">{{localize "SCUMBAGS.Sheet.Vehicles"}}</span>
+        {{#each vehicles}}
+        <div class="sb-item vehicle" data-actor-id="{{id}}">
+          <img src="{{img}}" alt="" data-action="openActor">
+          <div class="sb-item-main"><a class="sb-item-name" data-action="openActor">{{name}}</a><div class="sb-item-sub">{{sub}}</div></div>
+          <div class="sb-item-ctl">
+            <span class="sb-kv"><em>{{localize "SCUMBAGS.Vehicle.Speed"}}</em><b>{{speed}}</b></span>
+            <span class="sb-kv"><em>{{localize "SCUMBAGS.Vehicle.Handling"}}</em><b>{{handling}}</b></span>
+            <span class="sb-kv"><em>{{localize "SCUMBAGS.Sheet.HP"}}</em><b>{{hp}}/{{hpMax}}</b></span>
+            <span class="sb-kv"><em>{{localize "SCUMBAGS.Sheet.Armor"}}</em><b>{{armor}}</b></span>
+          </div>
+        </div>
+        {{else}}<div class="sb-empty">{{localize "SCUMBAGS.Sheet.VehicleHint"}}</div>{{/each}}
+      </div>
+
+      {{> "systems/scumbags/templates/fields.hbs" groups=money}}
+    </section>
+
+    {{!-- Биография --}}
+    <section class="tab {{#if on.bio}}active{{/if}}" data-group="primary" data-tab="bio">
+      {{> "systems/scumbags/templates/fields.hbs" groups=bio}}
+    </section>
+  </div>
+</div>

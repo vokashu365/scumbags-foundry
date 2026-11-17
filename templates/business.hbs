@@ -1,0 +1,13 @@
+<div class="sb-root">
+  <header class="sb-top item">
+    <img class="sb-thumb" src="{{actor.img}}" data-action="sbEditImage" data-edit="img" alt="" title="{{localize 'SCUMBAGS.Sheet.ChangeImage'}}">
+    <div class="sb-top-main">
+      <span class="sb-plate line">{{kindLabel}}</span>
+      <input class="sb-name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'SCUMBAGS.Sheet.Name'}}">
+    </div>
+    {{#unless legal}}<a class="sb-btn" data-action="rollProblem"><i class="fa-solid fa-dice-d10"></i> {{localize "SCUMBAGS.Business.ProblemRoll"}}</a>{{/unless}}
+  </header>
+  <div class="sb-body">
+    {{> "systems/scumbags/templates/fields.hbs" groups=groups}}
+  </div>
+</div>

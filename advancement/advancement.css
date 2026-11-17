@@ -1,0 +1,66 @@
+/* Окно развития персонажа: опыт на навыки и очки развития. Цвета и шрифты — из стилей системы. */
+.scumbags.sb-adv .sb-root.adv { padding-bottom: 12px; }
+.scumbags .adv-sum { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(0, 1.6fr); gap: 8px; flex: none; }
+.scumbags .adv-num { background: var(--sb-fog); border-radius: 6px; padding: 7px 10px 6px; display: flex; flex-direction: column; gap: 3px; }
+.scumbags .adv-num b { font-family: var(--sb-display); font-weight: 900; font-size: 32px; line-height: 1; }
+.scumbags .adv-num small { font-size: 12px; color: var(--sb-slate); }
+.scumbags .adv-num.left { background: var(--sb-navy); color: #fff; }
+.scumbags .adv-num.left .sb-lbl, .scumbags .adv-num.left small { color: var(--sb-line2); }
+.scumbags .adv-sum.bad .adv-num.left { background: var(--sb-red); }
+.scumbags .adv-opts { display: flex; flex-direction: column; justify-content: center; gap: 5px; padding-left: 4px; min-width: 0; }
+.scumbags .adv-opts .sb-tick { white-space: normal; }
+.scumbags.sb-sheet .adv-opts input.sb-mini { width: 70px; height: 22px; }
+.scumbags .adv-cap { font-size: 12.5px; color: var(--sb-slate); }
+.scumbags .adv-body { display: block; flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: 4px; }
+.scumbags .adv-note { margin: 0 0 6px; font-size: 13px; color: var(--sb-slate); }
+
+.scumbags .adv-statrow { display: flex; gap: 8px; flex-wrap: wrap; }
+.scumbags .adv-statrow .sb-tile { flex: 1 1 120px; }
+.scumbags .adv-statrow .sb-tile.warn { box-shadow: inset 0 0 0 2px var(--sb-red); }
+
+.scumbags .adv-skills { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.scumbags .adv-row { display: grid; grid-template-columns: minmax(0, 1fr) auto 30px; align-items: center; gap: 4px; padding: 2px 2px; border-bottom: 1px solid var(--sb-line); }
+.scumbags .adv-row:last-child { border-bottom: 0; }
+.scumbags .adv-row.up .adv-name { font-weight: 700; }
+.scumbags .adv-name { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scumbags .adv-name small { color: var(--sb-teal); font-size: 11px; }
+.scumbags .adv-name.custom { display: flex; align-items: center; gap: 3px; }
+.scumbags.sb-sheet .adv-name.custom input[type="text"] { height: 20px; font-size: 12.5px; }
+.scumbags .adv-native { display: inline-flex; align-items: center; gap: 2px; font-size: 11px; color: var(--sb-teal); flex: none; cursor: pointer; }
+.scumbags.sb-sheet .adv-native input[type="checkbox"] { width: 13px; min-width: 13px; height: 13px; }
+.scumbags .adv-step { display: inline-flex; align-items: center; gap: 3px; }
+.scumbags .adv-step > b { font-family: var(--sb-display); font-weight: 900; font-size: 19px; min-width: 16px; text-align: center; line-height: 1; }
+.scumbags.sb-sheet a.adv-btn { width: 18px; height: 18px; border-radius: 3px; background: var(--sb-navy); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+.scumbags.sb-sheet a.adv-btn:hover { background: var(--sb-red); color: #fff; }
+.scumbags.sb-sheet a.adv-btn.off { background: var(--sb-line); pointer-events: none; }
+.scumbags .adv-cost { font-family: var(--sb-display); font-weight: 800; font-size: 14px; color: var(--sb-teal); text-align: right; }
+.scumbags .adv-statrow .adv-step { gap: 8px; }
+.scumbags .adv-statrow .adv-step > b { min-width: 46px; }
+
+.scumbags .adv-archs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.scumbags.sb-sheet a.adv-arch { font-family: var(--sb-display); font-weight: 800; font-size: 17px; letter-spacing: .05em; text-transform: uppercase; background: var(--sb-fog); border-radius: 4px; padding: 5px 10px 4px; }
+.scumbags.sb-sheet a.adv-arch b { background: var(--sb-teal); color: #fff; border-radius: 3px; padding: 0 6px; margin-left: 4px; }
+.scumbags.sb-sheet a.adv-arch.active { background: var(--sb-navy); color: #fff; }
+.scumbags .adv-tree { display: flex; flex-direction: column; gap: 6px; }
+.scumbags .adv-trow { display: grid; grid-template-columns: 34px minmax(0, 1fr) 40px minmax(0, 1fr); gap: 8px; align-items: stretch; }
+.scumbags .adv-trow:has(> .adv-node:only-of-type) .adv-node { grid-column: 2 / -1; }
+.scumbags .adv-lvl { font-family: var(--sb-display); font-weight: 900; font-size: 26px; line-height: .9; color: var(--sb-teal); display: flex; flex-direction: column; justify-content: center; }
+.scumbags .adv-lvl small { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.scumbags .adv-fork { align-self: center; justify-self: center; font-family: var(--sb-display); font-weight: 900; font-size: 15px; color: #fff; background: var(--sb-teal); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
+.scumbags .adv-fork:empty { visibility: hidden; }
+.scumbags.sb-sheet a.adv-node { display: flex; gap: 8px; align-items: flex-start; background: var(--sb-fog); border-radius: 5px; padding: 6px 9px; }
+.scumbags .adv-node i { margin-top: 2px; font-size: 15px; color: var(--sb-navy); }
+.scumbags .adv-node span { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.scumbags .adv-node small { font-size: 12px; color: var(--sb-slate); line-height: 1.3; }
+.scumbags.sb-sheet a.adv-node.on { background: #DDE8EB; box-shadow: inset 4px 0 0 var(--sb-red); }
+.scumbags.sb-sheet a.adv-node.off { opacity: .4; pointer-events: none; }
+
+.scumbags .adv-foot { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex: none; padding-top: 8px; border-top: 2px dashed var(--sb-line2); }
+.scumbags .adv-problems { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--sb-red); }
+.scumbags .adv-problems .ok { color: #2F7D4F; font-weight: 600; }
+.scumbags .adv-actions { display: flex; gap: 8px; flex: none; }
+
+/* кнопка на листе персонажа */
+.scumbags.sb-sheet a.sb-btn.adv-open { padding: 6px 10px 5px; }
+.scumbags .adv-free { font-family: var(--sb-display); font-weight: 900; font-size: 18px; background: var(--sb-teal); color: #fff; border-radius: 3px; padding: 2px 6px 1px; }
+.scumbags .adv-free.bad { background: var(--sb-red); }

@@ -1,0 +1,22 @@
+{{#each groups}}
+<div class="sb-panel">
+  {{#if label}}<span class="sb-plate">{{label}}</span>{{/if}}
+  <div class="sb-fields">
+    {{#each fields}}
+    {{#if pips}}
+    <div class="sb-f check"><span>{{label}}</span><span class="sb-pips">{{#each pips}}<a class="sb-pip {{#if ../sq}}sq{{/if}} {{#if on}}on{{/if}}" data-action="setPips" data-field="{{../field}}" data-value="{{value}}"></a>{{/each}}</span></div>
+    {{else}}
+    <label class="sb-f {{cls}}">
+      <span>{{label}}</span>
+      {{#if isSelect}}<select name="{{name}}">{{selectOptions options selected=value}}</select>{{/if}}
+      {{#if isNumber}}<input type="number" name="{{name}}" value="{{value}}" step="1"{{#if hasMin}} min="{{min}}"{{/if}}{{#if hasMax}} max="{{max}}"{{/if}}>{{/if}}
+      {{#if isText}}<input type="text" name="{{name}}" value="{{value}}">{{/if}}
+      {{#if isCheck}}<input type="checkbox" name="{{name}}" {{checked value}}>{{/if}}
+      {{#if isArea}}<textarea name="{{name}}" rows="{{rows}}">{{value}}</textarea>{{/if}}
+      {{#if isPool}}<span class="sb-pool"><input type="number" name="{{name}}.value" value="{{value.value}}" min="0" step="1"><i>/</i><input type="number" name="{{name}}.max" value="{{value.max}}" min="0" step="1"></span>{{/if}}
+    </label>
+    {{/if}}
+    {{/each}}
+  </div>
+</div>
+{{/each}}

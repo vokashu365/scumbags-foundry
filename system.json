@@ -1,0 +1,278 @@
+{
+  "id": "scumbags",
+  "title": "Scumbags / Подонки",
+  "description": "Scumbags («Подонки») — криминальный экшен-песочница: чёрная комедия и сатира в Порт-Мерси. Crime action sandbox: black comedy and satire in Port Mercy.",
+  "version": "0.3.0",
+  "authors": [
+    {
+      "name": "Роман Ушаков"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "14"
+  },
+  "esmodules": [
+    "scumbags.mjs"
+  ],
+  "styles": [
+    "styles/scumbags.css",
+    "advancement/advancement.css"
+  ],
+  "languages": [
+    {
+      "lang": "ru",
+      "name": "Русский",
+      "path": "lang/ru.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {},
+      "vehicle": {},
+      "business": {}
+    },
+    "Item": {
+      "weapon": {},
+      "armor": {},
+      "ammo": {},
+      "mod": {},
+      "gear": {},
+      "effect": {}
+    }
+  },
+  "packs": [
+    {
+      "name": "pregens",
+      "label": "Готовые подонки",
+      "type": "Actor",
+      "path": "packs/ru/pregens",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "npcs",
+      "label": "NPC",
+      "type": "Actor",
+      "path": "packs/ru/npcs",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "vehicles",
+      "label": "Транспорт",
+      "type": "Actor",
+      "path": "packs/ru/vehicles",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "weapons",
+      "label": "Оружие, патроны, модификации",
+      "type": "Item",
+      "path": "packs/ru/weapons",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "armor",
+      "label": "Броня",
+      "type": "Item",
+      "path": "packs/ru/armor",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "gear",
+      "label": "Снаряжение и тюнинг",
+      "type": "Item",
+      "path": "packs/ru/gear",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "rules",
+      "label": "Шпаргалка",
+      "type": "JournalEntry",
+      "path": "packs/ru/rules",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "pregens-en",
+      "label": "Ready-made Scumbags",
+      "type": "Actor",
+      "path": "packs/en/pregens",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "npcs-en",
+      "label": "NPCs",
+      "type": "Actor",
+      "path": "packs/en/npcs",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "vehicles-en",
+      "label": "Vehicles",
+      "type": "Actor",
+      "path": "packs/en/vehicles",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "weapons-en",
+      "label": "Weapons, Ammo, Mods",
+      "type": "Item",
+      "path": "packs/en/weapons",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "armor-en",
+      "label": "Armor",
+      "type": "Item",
+      "path": "packs/en/armor",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "gear-en",
+      "label": "Gear and Tuning",
+      "type": "Item",
+      "path": "packs/en/gear",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "rules-en",
+      "label": "Cheat Sheet",
+      "type": "JournalEntry",
+      "path": "packs/en/rules",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "maps",
+      "label": "Карта Порт-Мерси",
+      "type": "Scene",
+      "path": "packs/ru/maps",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "maps-en",
+      "label": "Port Mercy Map",
+      "type": "Scene",
+      "path": "packs/en/maps",
+      "system": "scumbags",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Подонки — русский",
+      "sorting": "m",
+      "color": "#192636",
+      "packs": [
+        "pregens",
+        "npcs",
+        "vehicles",
+        "weapons",
+        "armor",
+        "gear",
+        "rules",
+        "maps"
+      ]
+    },
+    {
+      "name": "Scumbags — English",
+      "sorting": "m",
+      "color": "#527A85",
+      "packs": [
+        "pregens-en",
+        "npcs-en",
+        "vehicles-en",
+        "weapons-en",
+        "armor-en",
+        "gear-en",
+        "rules-en",
+        "maps-en"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "type": "setup",
+      "thumbnail": "systems/scumbags/assets/ui/thumbnail.webp"
+    }
+  ],
+  "background": "systems/scumbags/assets/ui/background.webp",
+  "grid": {
+    "distance": 2,
+    "units": "м"
+  },
+  "primaryTokenAttribute": "hp",
+  "secondaryTokenAttribute": null,
+  "socket": true,
+  "url": "https://github.com/vokashu365/scumbags-foundry",
+  "manifest": "https://github.com/vokashu365/scumbags-foundry/releases/latest/download/system.json",
+  "download": "https://github.com/vokashu365/scumbags-foundry/releases/download/v0.3.0/scumbags.zip",
+  "readme": "https://github.com/vokashu365/scumbags-foundry#readme"
+}

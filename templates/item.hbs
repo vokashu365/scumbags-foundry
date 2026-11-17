@@ -1,0 +1,35 @@
+<div class="sb-root">
+  <header class="sb-top item">
+    <img class="sb-thumb" src="{{item.img}}" data-action="sbEditImage" data-edit="img" alt="" title="{{localize 'SCUMBAGS.Sheet.ChangeImage'}}">
+    <div class="sb-top-main">
+      <span class="sb-plate line">{{typeLabel}}</span>
+      <input class="sb-name" type="text" name="name" value="{{item.name}}" placeholder="{{localize 'SCUMBAGS.Sheet.Name'}}">
+    </div>
+  </header>
+  <nav class="sb-tabs tabs" data-group="primary">
+    {{#each tabs}}<a data-action="tab" data-group="primary" data-tab="{{id}}" class="{{#if active}}active{{/if}}">{{label}}</a>{{/each}}
+  </nav>
+  <div class="sb-body">
+    <section class="tab {{#if on.info}}active{{/if}}" data-group="primary" data-tab="info">
+      {{#if priced}}
+      <div class="sb-tiles">
+        <div class="sb-tile"><span class="sb-lbl">{{localize "SCUMBAGS.Item.PriceOfficialShort"}}</span><b>{{priceOfficial}}</b></div>
+        <div class="sb-tile"><span class="sb-lbl">{{localize "SCUMBAGS.Item.PriceBlackShort"}}</span><b>{{priceBlack}}</b></div>
+      </div>
+      {{/if}}
+      {{#if facts.length}}
+      <div class="sb-panel">
+        {{#each facts}}<div class="sb-fact"><span class="sb-lbl">{{label}}</span><span>{{value}}</span></div>{{/each}}
+      </div>
+      {{/if}}
+      <div class="sb-panel">
+        <span class="sb-plate">{{localize "SCUMBAGS.Item.Description"}} {{#if editable}}<a class="sb-add" data-action="uiToggle" data-key="desc" title="{{localize 'SCUMBAGS.Item.EditDescription'}}"><i class="fa-solid {{#if ui.desc}}fa-check{{else}}fa-pen{{/if}}"></i></a>{{/if}}</span>
+        {{#if ui.desc}}<textarea name="system.description" rows="6">{{system.description}}</textarea>
+        {{else}}<div class="sb-desc">{{#if system.description}}{{system.description}}{{else}}<span class="sb-empty">{{localize "SCUMBAGS.Item.NoDescription"}}</span>{{/if}}</div>{{/if}}
+      </div>
+    </section>
+    <section class="tab {{#if on.settings}}active{{/if}}" data-group="primary" data-tab="settings">
+      {{> "systems/scumbags/templates/fields.hbs" groups=groups}}
+    </section>
+  </div>
+</div>

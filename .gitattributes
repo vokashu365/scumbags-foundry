@@ -1,0 +1,4 @@
+packs/** binary
+*.webp binary
+*.png binary
+*.ttf binary
